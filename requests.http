@@ -1,0 +1,74 @@
+### -----AUTH-------
+
+### Регаем пользователя
+POST http://127.0.0.1:8000/api/v1/auth/users/
+Content-Type: application/json
+
+{
+    "email": "ee-4@ya.ru",
+    "password": "q1r4w2e3",
+    "organization": "1"
+}
+### Получить токен по логину паролю
+POST http://127.0.0.1:8000/api/v1/auth/jwt/create/
+Content-Type: application/json
+
+{
+    "email": "ee-3@ya.ru",
+    "password": "q1r4w2e3"
+}
+###
+GET  http://127.0.0.1:8000/api/v1/auth/users/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg1NDc0MzYyLCJqdGkiOiIxZDY0ZWU1NGQ1NjA0YjlmODBjYzllZWI4MmRlYjU0OSIsInVzZXJfaWQiOjN9.7aKcovVUKEWUpWS9avXZL9EL7eSsK-15C8sZVCnG0AY
+###
+GET http://127.0.0.1:8000/api/v1/auth/users/3/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg1NDc0MzYyLCJqdGkiOiIxZDY0ZWU1NGQ1NjA0YjlmODBjYzllZWI4MmRlYjU0OSIsInVzZXJfaWQiOjN9.7aKcovVUKEWUpWS9avXZL9EL7eSsK-15C8sZVCnG0AY
+###
+GET http://127.0.0.1:8000/api/v1/auth/users/me/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg1NDc0MzYyLCJqdGkiOiIxZDY0ZWU1NGQ1NjA0YjlmODBjYzllZWI4MmRlYjU0OSIsInVzZXJfaWQiOjN9.7aKcovVUKEWUpWS9avXZL9EL7eSsK-15C8sZVCnG0AY
+###
+POST http://127.0.0.1:8000/api/v1/auth/users/set_password/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg1NDUwMjc4LCJqdGkiOiI1NDVlNGNkOTg1YWY0ODc0YjY2NTI5OWI2OTU0MzE5MyIsInVzZXJfaWQiOjJ9.xWym7iIsUIkPmVKy5axDPGJILrBQtpmeAihnwrW1rgI
+
+{
+    "new_password": "q1r4w2e3",
+    "current_password": "q1r4w2e3"
+}
+### Ручки по заданию:
+POST http://127.0.0.1:8000/api/v1/create_organization/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg1NTMwNjAzLCJqdGkiOiJlMmIxNzVkZjdhZmU0NDJjODM5ZDIzZmZmZWY4ODE3YyIsInVzZXJfaWQiOjV9.0O8pC7KJYbq4fCNgqjRFRDwFNi1sAsAPOO2Bq7zucTQ
+
+{
+    "title": "q1r4w2e321",
+    "description": "q1r4w2e3",
+    "address": "q1r4w2e3",
+    "postcode": "111111"
+}
+###
+POST http://127.0.0.1:8000/api/v1/create_event/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg1NTMwNjAzLCJqdGkiOiJlMmIxNzVkZjdhZmU0NDJjODM5ZDIzZmZmZWY4ODE3YyIsInVzZXJfaWQiOjV9.0O8pC7KJYbq4fCNgqjRFRDwFNi1sAsAPOO2Bq7zucTQ
+
+{
+    "title": "q1r4w2e321",
+    "description": "q1r4w2e3",
+    "date": "2023-12-12"
+}
+
+###
+GET http://127.0.0.1:8000/api/v1/full_event_info/1/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg1NTMwNjAzLCJqdGkiOiJlMmIxNzVkZjdhZmU0NDJjODM5ZDIzZmZmZWY4ODE3YyIsInVzZXJfaWQiOjV9.0O8pC7KJYbq4fCNgqjRFRDwFNi1sAsAPOO2Bq7zucTQ
+###
+GET http://127.0.0.1:8000/api/v1/custom_event_info/?min_date=2023-05-30&max_date=2023-05-31&search=qweqwe
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg1NTMwNjAzLCJqdGkiOiJlMmIxNzVkZjdhZmU0NDJjODM5ZDIzZmZmZWY4ODE3YyIsInVzZXJfaWQiOjV9.0O8pC7KJYbq4fCNgqjRFRDwFNi1sAsAPOO2Bq7zucTQ
+###
+GET http://127.0.0.1:8000/api/v1/custom_event_info/?limit=1&offset=0
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg1NTMwNjAzLCJqdGkiOiJlMmIxNzVkZjdhZmU0NDJjODM5ZDIzZmZmZWY4ODE3YyIsInVzZXJfaWQiOjV9.0O8pC7KJYbq4fCNgqjRFRDwFNi1sAsAPOO2Bq7zucTQ

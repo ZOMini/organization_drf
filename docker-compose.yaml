@@ -6,8 +6,6 @@ services:
       - events_db:/var/lib/postgresql/data/
     env_file:
       - ./.env
-    # ports:
-    #   - 5432:5432
 
   redis_events:
     image: redis:alpine
@@ -15,8 +13,6 @@ services:
     volumes:
       - redis_events:/redis_events/data
     restart: always
-    # ports:
-    #   - 6379:6379
 
   events:
     build: ./.
@@ -38,7 +34,7 @@ services:
   nginx:
     image: nginx:1.19.3
     ports:
-      - '8081:8081'
+      - '80:80'
     volumes:
       - static_volume:/events/static
       - media_volume:/events/media

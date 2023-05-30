@@ -7,10 +7,6 @@ app_name = 'api'
 v1_router = DefaultRouter()
 
 
-# v1_router.register(r'users', views.CreateUserView, 'Users')
-# v1_router.register('create_organization', views.CreateOrganization, 'Create Organization')
-# v1_router.register('create_event', views.CreateEvent, 'Create Event')
-
 urlpatterns = [
     path('create_organization/', views.CreateOrganization.as_view({'post': 'create'}), name='create_organization'),
     path('create_event/', views.CreateEvent.as_view({'post': 'create'}), name='create_event'),

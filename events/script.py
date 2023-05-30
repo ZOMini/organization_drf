@@ -19,8 +19,8 @@ sys.argv = ['', 'migrate']
 runpy.run_path('./manage.py', run_name='__main__')
 
 # Собираем статику.
-# sys.argv = ['', 'collectstatic', '--noinput']
-# runpy.run_path('./manage.py', run_name='__main__')
+sys.argv = ['', 'collectstatic', '--noinput']
+runpy.run_path('./manage.py', run_name='__main__')
 
 # Создаем организацию.
 from api.models import Organization

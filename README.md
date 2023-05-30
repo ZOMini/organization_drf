@@ -1,11 +1,8 @@
 ```
-Проект работает:
-http://130.193.37.228:9003/
-un: ee-2@ya.ru / pw: Vitaliya  -(superuser)
-```
-[![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://130.193.37.228:9003/api/docs/)
-[![foodgram workflow](https://github.com/zomini/foodgram-project-react/actions/workflows/main.yml/badge.svg)](https://github.com/zomini/zomini/foodgram-project-react/actions/workflows/main.yml)
+Проект скоро заработает:
 
+```
+## Нюансы
 - "Пользователь должен состоять в организации" и "Доступ к созданию организации имеют только авторизованные пользователи", так как пользователя можно создать и авторизовать, если еще нет его организации... Решение: Создание организации возможно без авторизации.
 
 ## Запуск проекта:

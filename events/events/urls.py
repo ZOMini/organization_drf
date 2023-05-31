@@ -5,12 +5,6 @@ from django.views.generic import TemplateView
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView
-)
-
-from ws.views import MessageSendAPIView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -38,7 +32,5 @@ urlpatterns = [
         name='schema-json'),
     path('admin/', admin.site.urls),
     path('api/v1/', include('api.urls', namespace='api')),
-    path('message/', MessageSendAPIView.as_view()),
-    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('ws/', include('ws.urls')),
 ]

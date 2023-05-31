@@ -59,7 +59,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'events.wsgi.application'
-ASGI_APPLICATION = 'events.routing.application'
+ASGI_APPLICATION = 'events.asgi.application'
 
 DATABASES = {
     'default': {
@@ -153,3 +153,5 @@ CHANNEL_LAYERS = {
         },
     },
 }
+LOGIN_REDIRECT_URL = 'chat-page'
+LOGOUT_REDIRECT_URL  = 'login-user'

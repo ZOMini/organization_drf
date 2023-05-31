@@ -22,3 +22,15 @@
 ## Тестирование админки
   - При деплоее автоматичесуи создается superuser (admin@example.com/qwer1234)
   - http://127.0.0.1/admin/ Логинемся и тестируем.
+
+## Тестирование ws chat
+  - docker-compose -f docker-compose_dev.yaml up
+  - из папки приложения /events:
+    - python script.py
+    - python manage.py runserver
+  - логинемся(например суперюзером admin@example.com/qwer1234):
+    - 127.0.0.1:8000/ws/auth/login/   для cookie ws 
+  - чатимся:
+    - 127.0.0.1:8000/ws/ 
+  - если нужен второй пользователь, запускаем ДРУГОЙ браузер, регаем 2-го пользователя(через админку), логинемся, чатимся.
+  - p.s. nginx & django+WS пока победить не удалось(.

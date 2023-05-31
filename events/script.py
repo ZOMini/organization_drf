@@ -15,6 +15,9 @@ time.sleep(1)  # Ждем на всякий.
 sys.argv = ['', 'makemigrations', 'api']
 runpy.run_path('./manage.py', run_name='__main__')
 
+sys.argv = ['', 'makemigrations', 'ws']
+runpy.run_path('./manage.py', run_name='__main__')
+
 sys.argv = ['', 'migrate']
 runpy.run_path('./manage.py', run_name='__main__')
 

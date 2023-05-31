@@ -9,6 +9,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView
 )
+
 from ws.views import MessageSendAPIView
 
 schema_view = get_schema_view(

@@ -14,6 +14,8 @@ DEBUG = os.environ.get('debug', True) == 'True'
 
 ALLOWED_HOSTS = os.environ.get('allowed_hosts', ['127.0.0.1', 'localhost'])
 
+INTERNAL_IPS = ["127.0.0.1",]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -21,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'channels',
     'rest_framework',
     'channels_redis',
@@ -38,6 +41,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'events.urls'

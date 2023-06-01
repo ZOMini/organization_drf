@@ -15,17 +15,14 @@ from api.serializers import (
 
 
 class CreateUserView(UserViewSet):
-    queryset = User.objects.all()
     serializer_class = RegistrationSerializer
 
 class CreateOrganization(mixins.CreateModelMixin, viewsets.GenericViewSet):
-    queryset = Organization.objects.all()
     serializer_class = OrganizationSerializer
     permission_classes = [permissions.AllowAny] #  либо [permissions.IsAuthenticated]
 
     
 class CreateEvent(mixins.CreateModelMixin, viewsets.GenericViewSet):
-    queryset = Event.objects.all()
     serializer_class = EventSerializer
     permission_classes = [permissions.IsAuthenticated]
 
@@ -36,7 +33,7 @@ class FullEventInfo(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
 
     def get_object(self):
         event_id = int(self.kwargs.get('event_id'))
-        return get_object_or_404(Event, id=event_id)
+        return Event.objects.get(id=event_id)
 
 
 class CustomEventInfo(mixins.ListModelMixin, viewsets.GenericViewSet):

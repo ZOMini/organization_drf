@@ -57,7 +57,12 @@ class FullEventOrganizationSerializer(serializers.ModelSerializer):
     
 
 class FullEventSerializer(serializers.ModelSerializer):
-    organizations = FullEventOrganizationSerializer(many=True)
+    organizations = serializers.SerializerMethodField()
+
+    def get_organizations(self, obj):
+        queryset = Organization.objects.filter(event__id=obj.id).prefetch_related('members')
+        print(queryset)
+        return FullEventOrganizationSerializer(queryset, many=True).data
 
     class Meta:
         model = Event

@@ -23,7 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
+    'silk',
     'channels',
     'rest_framework',
     'channels_redis',
@@ -41,7 +41,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    'silk.middleware.SilkyMiddleware',
 ]
 
 ROOT_URLCONF = 'events.urls'
@@ -73,9 +73,6 @@ DATABASES = {
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD', '123qwe'),
         'HOST': os.environ.get('POSTGRES_HOST', '127.0.0.1'),
         'PORT': os.environ.get('POSTGRES_PORT', 5432),
-        # 'OPTIONS': {
-        #    'options': '-c search_path=public,content'
-        # }
     }
 }
 

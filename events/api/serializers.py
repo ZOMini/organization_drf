@@ -17,6 +17,7 @@ class RegistrationSerializer(UserCreateSerializer):
         result.pop('password', None)
         return result
 
+
 class OrganizationSerializer(serializers.ModelSerializer):
 
     class Meta:

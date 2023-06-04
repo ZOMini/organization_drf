@@ -14,7 +14,7 @@ DEBUG = os.environ.get('debug', True) == 'True'
 
 ALLOWED_HOSTS = os.environ.get('allowed_hosts', ['127.0.0.1', 'localhost'])
 
-INTERNAL_IPS = ["127.0.0.1",]
+INTERNAL_IPS = ["127.0.0.1", ]
 
 INSTALLED_APPS = [
     'django.contrib.admin',

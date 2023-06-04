@@ -18,18 +18,18 @@ schema_view = get_schema_view(
     ),
     patterns=[path('api/v1/', include('api.urls')), ],
     public=True,
-    permission_classes=(permissions.AllowAny,),
+    permission_classes=[permissions.AllowAny, ]
 )
 
 urlpatterns = [
     path('swagger-ui/',
-        TemplateView.as_view(
+         TemplateView.as_view(
             template_name='swaggerui/swaggerui.html',
             extra_context={'schema_url': 'openapi-schema'}
-        ),
-        name='swagger-ui'),
+         ),
+         name='swagger-ui'),
     url(r'^swagger(?P<format>\.json|\.yaml)$',
-            schema_view.without_ui(cache_timeout=0),
+        schema_view.without_ui(cache_timeout=0),
         name='schema-json'),
     path('admin/', admin.site.urls),
     path('api/v1/', include('api.urls', namespace='api')),

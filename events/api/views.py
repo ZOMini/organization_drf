@@ -1,4 +1,3 @@
-from django.shortcuts import get_object_or_404
 from django_filters import rest_framework as django_filters
 from djoser.views import UserViewSet
 from rest_framework import filters, mixins, permissions, viewsets
@@ -19,7 +18,7 @@ class CreateUserView(UserViewSet):
 
 class CreateOrganization(mixins.CreateModelMixin, viewsets.GenericViewSet):
     serializer_class = OrganizationSerializer
-    permission_classes = [permissions.AllowAny] #  либо [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]  # либо [permissions.IsAuthenticated]
 
     
 class CreateEvent(mixins.CreateModelMixin, viewsets.GenericViewSet):

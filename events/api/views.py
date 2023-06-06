@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from django_filters import rest_framework as django_filters
 from djoser.views import UserViewSet
 from rest_framework import filters, mixins, permissions, viewsets
@@ -33,7 +34,7 @@ class FullEventInfo(mixins.RetrieveModelMixin, viewsets.GenericViewSet):
 
     def get_object(self):
         event_id = int(self.kwargs.get('event_id'))
-        return Event.objects.get(id=event_id)
+        return get_object_or_404(Event, pk=event_id)
 
 
 class CustomEventInfo(mixins.ListModelMixin, viewsets.GenericViewSet):

@@ -1,4 +1,4 @@
-FROM python:3.10.9-slim
+FROM python:3.11-slim
 
 WORKDIR /events
 
@@ -10,6 +10,5 @@ RUN pip install --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt
 
 COPY /events .
-
 
 # CMD ["gunicorn", "config.wsgi", "--bind", "0.0.0.0:8202"]

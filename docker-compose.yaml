@@ -16,6 +16,7 @@ services:
 
   events:
     build: ./.
+    image: events_image
     container_name: events
     volumes:
       - static_volume:/events/static
@@ -28,7 +29,20 @@ services:
     depends_on:
       - events_db
       - redis_events
-    command: bash -c "python script.py && gunicorn events.wsgi --bind 0.0.0.0:8000"
+    command: bash -c "python script.py && gunicorn -b :8000 events.wsgi:application"
+    restart: on-failure
+
+  events_ws:
+    image: events_image
+    container_name: events_ws
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_HOST=events_db
+      - REDIS_HOST=redis_events
+    depends_on:
+      - events
+    command: bash -c "daphne -b 0.0.0.0 -p 8001 events.asgi:application"
     restart: on-failure
 
   nginx:

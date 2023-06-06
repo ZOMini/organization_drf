@@ -11,8 +11,8 @@ from ws import routing
 
 application = ProtocolTypeRouter(
     {
-        "http" : get_asgi_application() ,
-        "websocket" : AuthMiddlewareStack(
+        "http": get_asgi_application(),
+        "websocket": AuthMiddlewareStack(
             URLRouter(
                 routing.websocket_urlpatterns
             )   

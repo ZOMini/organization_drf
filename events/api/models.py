@@ -7,6 +7,7 @@ from events.settings import MEDIA_URL
 
 
 class Organization(models.Model):
+    objects = models.Manager()
     title = models.CharField(
         max_length=128,
         unique=True,
@@ -31,7 +32,9 @@ class Organization(models.Model):
     def __str__(self):
         return self.title
 
+
 class Event(models.Model):
+    objects = models.Manager()
     title = models.CharField(
         max_length=128,
         unique=True,
@@ -70,8 +73,10 @@ class Event(models.Model):
 
 
 class OrganizationInEvent(models.Model):
+    objects = models.Manager()
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
+
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, organization, password=None):
@@ -96,6 +101,7 @@ class CustomUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+
 class User(AbstractBaseUser):
     email = models.EmailField(
         db_index=True,
@@ -111,7 +117,7 @@ class User(AbstractBaseUser):
     is_admin = models.BooleanField(default=False)
     organization = models.ForeignKey(Organization,
                                      related_name='members',
-                                     on_delete = models.CASCADE)
+                                     on_delete=models.CASCADE)
     objects = CustomUserManager()
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['password', 'organization']
@@ -128,6 +134,3 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return self.email
-
-
-

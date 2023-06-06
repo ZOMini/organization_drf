@@ -29,6 +29,7 @@ class UserAdmin(BaseUserAdmin):
     ordering = ['email']
     filter_horizontal = []
 
+
 admin.site.register(User, UserAdmin)
 admin.site.unregister(Group)
 
@@ -44,10 +45,11 @@ class OrganizationAdmin(admin.ModelAdmin):
         return [i.email for i in User.objects.filter(organization=obj).all()]
     members.short_description = 'Участники от компании.'
 
-class OrganizationInline(admin.TabularInline):
 
+class OrganizationInline(admin.TabularInline):
     model = OrganizationInEvent
     extra = 0
+
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):

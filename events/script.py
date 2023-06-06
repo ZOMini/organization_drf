@@ -36,6 +36,9 @@ org = Organization.objects.get_or_create(
 # Создаем суперпользователя.
 email = os.environ.get('ADMIN_EMAIL', 'admin@example.com')
 password = os.environ.get('SUPERPASS', 'qwer1234')
-sys.argv = ['', 'create_superuser2', '--email', email, '--password', password, '--organization', str(org[0].id), '--noinput', '--preserve']
+sys.argv = ['', 'create_superuser2',
+            '--email', email,
+            '--password', password,
+            '--organization', str(org[0].id),
+            '--noinput', '--preserve']
 runpy.run_path('./manage.py', run_name='__main__')
-

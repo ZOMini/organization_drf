@@ -4,7 +4,7 @@ from rest_framework import filters, mixins, permissions, viewsets
 from rest_framework.pagination import LimitOffsetPagination
 
 from api.filters import EventsFilters
-from api.models import Event, Organization, User
+from api.models import Event
 from api.serializers import (
     EventSerializer,
     FullEventSerializer,
@@ -15,6 +15,7 @@ from api.serializers import (
 
 class CreateUserView(UserViewSet):
     serializer_class = RegistrationSerializer
+
 
 class CreateOrganization(mixins.CreateModelMixin, viewsets.GenericViewSet):
     serializer_class = OrganizationSerializer
@@ -39,7 +40,7 @@ class CustomEventInfo(mixins.ListModelMixin, viewsets.GenericViewSet):
     serializer_class = EventSerializer
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [django_filters.DjangoFilterBackend, filters.SearchFilter]
-    search_fields = ['title',]
+    search_fields = ['title', ]
     filterset_class = EventsFilters
     pagination_class = LimitOffsetPagination
     queryset = Event.objects.all()

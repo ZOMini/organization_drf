@@ -3,6 +3,8 @@ from rest_framework import serializers
 
 from api.models import Event, Organization, User
 
+from django.db import models
+
 
 class RegistrationSerializer(UserCreateSerializer):
 
@@ -58,6 +60,7 @@ class FullEventOrganizationSerializer(serializers.ModelSerializer):
     
 
 class FullEventSerializer(serializers.ModelSerializer):
+    objects = models.Manager()
     organizations = serializers.SerializerMethodField()
 
     def get_organizations(self, obj):

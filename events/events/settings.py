@@ -114,7 +114,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'api.User'
 
 REST_FRAMEWORK = {
-    'DEFAULT_RENDERER_CLASSES': ["rest_framework.renderers.JSONRenderer",],
+    'DEFAULT_RENDERER_CLASSES': ["rest_framework.renderers.JSONRenderer", ],
 
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
@@ -155,4 +155,4 @@ CHANNEL_LAYERS = {
     },
 }
 LOGIN_REDIRECT_URL = 'chat-page'
-LOGOUT_REDIRECT_URL  = 'login-user'
+LOGOUT_REDIRECT_URL = 'login-user'
